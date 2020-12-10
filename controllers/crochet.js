@@ -9,13 +9,13 @@ async function create(req, res) {
   console.log(req.user);
   try {
     await Crochet.create(req.body);
-    crochetBikes(req, res);
+    crochetProject(req, res);
   } catch (err) {
     res.json({ err });
   }
 }
 
 async function crochetProject(req, res) {
-  const chrochets = await crochet.find({})
+  const crochets = await crochet.find({})
   res.json(scores);
 }
