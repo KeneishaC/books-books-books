@@ -6,15 +6,14 @@ const crochetSchema = new Schema({
         type: String,
         required: true
     },
-
-    projectTime: {
-        type: Number,
-        required: true
-    },
-
     description: {
         type: String, 
         required: true
+    },
+    image: {
+        type: String,
+        required: true
+
     }
 
 })
