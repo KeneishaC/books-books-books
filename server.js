@@ -20,7 +20,7 @@ app.use(cors());
 
 app.use('/api/scores', scoresRouter);
 app.use('/api/users', usersRouter);
-app.use('/crochet', crochetRouter);
+app.use('/api/crochet', crochetRouter);
 
 
 const port = process.env.PORT || 3001;
