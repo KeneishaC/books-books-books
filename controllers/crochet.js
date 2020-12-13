@@ -41,8 +41,7 @@ async function crochetProject(req, res) {
 
 async function update(req, res) {
     try{
-      const updateCrochet = await  
-      Crochet.findByIdAndUpdate({id: req.params.id})
+      const updateCrochet = await Crochet.findByIdAndUpdate(req.params.id, req.body)
       res.json(updateCrochet)
     } catch (err){
         res.json({err})
