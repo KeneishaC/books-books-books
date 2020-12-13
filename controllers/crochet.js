@@ -3,17 +3,18 @@ const Crochet = require("../models/crochet");
 module.exports = {
   create,
   crochetProject,
-  delete: deleteCrochetProject,
+  delete: deleteOne,
   update,
   edit, 
-//   show
+  show,
+  showOne
 };
 
 async function create(req, res) {
   console.log(req.user);
   try {
-    await Crochet.create(req.body);
-   await  crochetProject(req, res);
+    const newCrochet = await Crochet.create(req.body);
+   res.json(newCrochet)
   } catch (err) {
     res.json({ err });
   }
@@ -22,27 +23,51 @@ async function create(req, res) {
 async function crochetProject(req, res) {
     try {
         const crochets = await Crochet.find({})
+        console.log(crochets)
         res.json(crochets);
     } catch (err) {
-        res.json({err})
+        res.json(err)
     }
 }
 
- function deleteCrochetProject(req, res) {
+ async function deleteOne(req, res) {
      try {
-         Crochet.findByIdAndRemove(req.params.id)
+      const deleteCrochet = await Crochet.findByIdAndRemove(req.params.id)
+      res.json(deleteCrochet)
      } catch (err){
-         res.json({err})
+         res.json(err)
      }
 }
 
 async function update(req, res) {
     try{
-        Crochet.findByIdAndUpdate({id: req.params.id})
+      const updateCrochet = await  
+      Crochet.findByIdAndUpdate({id: req.params.id})
+      res.json(updateCrochet)
     } catch (err){
         res.json({err})
     }
 
+}
+
+async function show(req, res) {
+    try{
+        const showCrochet = await
+        Crochet.findById(req.params.id) 
+            res.json(showCrochet)
+    } catch (err) {
+        res.json({err})
+    }
+}
+
+async function showOne(req, res) {
+    try{
+        const oneCrochet = await 
+        Crochet.find({_id: req.params.id})
+        res.json(oneCrochet)
+    }catch(err){
+        res.json({err})
+    }
 }
 
 async function edit (req, res) {
@@ -55,7 +80,3 @@ async function edit (req, res) {
     }
 }
 
-//async function show (req, res) {
-//     crochetProject. findById(req.params.id) 
-//         res.json(crochetProject)
-// }

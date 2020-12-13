@@ -10,8 +10,8 @@ router.get('/', crochetCtrl.crochetProject);
 router.post("/", crochetCtrl.create);
 router.delete("/:id", crochetCtrl.delete)
 router.put("/:id", crochetCtrl.update)
-router.get("/:id/edit", crochetCtrl.edit)
-
+router.get("/:id", crochetCtrl.show)
+router.get('/id', crochetCtrl.showOne)
 
 
 
