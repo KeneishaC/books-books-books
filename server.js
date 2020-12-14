@@ -1,6 +1,7 @@
 const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
+const port = process.env.PORT || 3001;
 
 const app = express();
 
@@ -22,7 +23,6 @@ app.use('/api/users', usersRouter);
 app.use('/api/crochet', crochetRouter);
 
 
-const port = process.env.PORT || 3001;
 	
 app.listen(port, function() {
   console.log(`Express app running on port ${port}`)
